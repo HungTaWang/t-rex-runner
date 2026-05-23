@@ -70,7 +70,7 @@ function setupUI() {
     btn.onclick = () => {
         if (!modelLoaded) return;
         aiEnabled = !aiEnabled;
-        btn.innerText = aiEnabled ? "Disable AI" : "Enable AI";
+        btn.innerText = aiEnabled ? "Auto" : "Auto";
         btn.style.backgroundColor = aiEnabled ? "#4CAF50" : "#535353";
         
         if (aiEnabled) {
@@ -100,7 +100,7 @@ async function initONNX() {
         
         // Update UI
         if (btn) {
-            btn.innerText = "Enable AI";
+            btn.innerText = "Auto";
             btn.disabled = false;
             btn.style.cursor = "pointer";
         }
