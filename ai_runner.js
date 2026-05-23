@@ -48,14 +48,14 @@ function setupUI() {
     btn.innerText = "Loading AI Model...";
     btn.disabled = true;
     
-    // Default to centered and prominent styling
+    // Fixed at bottom, wider, and thinner
     btn.style.position = "absolute";
-    btn.style.top = "50%";
+    btn.style.bottom = "30px";
     btn.style.left = "50%";
-    btn.style.transform = "translate(-50%, -50%)";
+    btn.style.transform = "translateX(-50%)";
     btn.style.zIndex = "9999";
-    btn.style.padding = "20px 40px";
-    btn.style.fontSize = "24px";
+    btn.style.padding = "10px 100px";
+    btn.style.fontSize = "20px";
     btn.style.fontWeight = "bold";
     btn.style.fontFamily = "monospace";
     btn.style.cursor = "not-allowed";
@@ -64,7 +64,7 @@ function setupUI() {
     btn.style.border = "none";
     btn.style.borderRadius = "8px";
     btn.style.boxShadow = "0 4px 6px rgba(0,0,0,0.3)";
-    btn.style.transition = "all 0.3s ease"; // Smooth transition
+    btn.style.transition = "all 0.3s ease";
 
     btn.onclick = () => {
         if (!modelLoaded) return;
@@ -73,26 +73,12 @@ function setupUI() {
         btn.style.backgroundColor = aiEnabled ? "#4CAF50" : "#535353";
         
         if (aiEnabled) {
-            // Move to top-left corner
-            btn.style.top = "20px";
-            btn.style.left = "20px";
-            btn.style.transform = "none";
-            btn.style.padding = "10px 20px";
-            btn.style.fontSize = "16px";
-            
             // Automatically start the game if it hasn't started yet
             if (Runner && Runner.instance_ && !Runner.instance_.playing) {
                 document.dispatchEvent(new KeyboardEvent('keydown',{'keyCode':32,'which':32}));
             }
             aiLoop();
         } else {
-            // Move back to center
-            btn.style.top = "50%";
-            btn.style.left = "50%";
-            btn.style.transform = "translate(-50%, -50%)";
-            btn.style.padding = "20px 40px";
-            btn.style.fontSize = "24px";
-
             if (aiLoopId) {
                 cancelAnimationFrame(aiLoopId);
                 aiLoopId = null;
