@@ -8,6 +8,7 @@ let aiLoopId = null;
 let modelLoaded = false;
 let btn = null;
 
+
 // The state extraction logic translated from Python to JS
 function getGameState() {
     if (!Runner || !Runner.instance_) return null;
